@@ -1,0 +1,18 @@
+name: Artifact
+
+on: [push]
+
+env:
+  Artifact_Name: myartifact
+
+jobs: 
+  main: 
+    run-on: ubuntu-latest
+    steps:
+    -name: check out the name
+    use: actions/checkout@v2
+    -name: upload the artifact
+    use: actions/upload-artifact@v2
+    with: 
+      name:${{ env.ARTIFACT_NAME }}
+      path: .
